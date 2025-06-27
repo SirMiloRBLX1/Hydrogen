@@ -1,0 +1,6 @@
+# Hydrogen
+This is A Roblox Executor With 100% UNC
+
+**NOTE: CREDITS TO THE ORIGINAL HYDROGEN EXECUTOR AND THIS IS JUST A REMAKE**
+
+**IF SOMETHING IS A PROBLEM PLEASE EMAIL rileybeerblx1@gmail.com**
