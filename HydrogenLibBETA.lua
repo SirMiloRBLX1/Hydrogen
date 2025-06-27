@@ -1,15 +1,30 @@
 local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
 
 local Hydrogen = {}
 
 Hydrogen.API_BASE = "https://hydrogen-key-system.vercel.app/api"
 Hydrogen.KEY_FILE = "hydrogen.key"
 
+local function getClientInfo()
+	local player = Players.LocalPlayer
+
+	return {
+		UserId = player and player.UserId or 0,
+		Username = player and player.Name or "Unknown",
+		HWID = game:GetService("RbxAnalyticsService"):GetClientId() or "Unavailable"
+	}
+end
+
 function Hydrogen.GetKey()
-	if isfile and isfile(Hydrogen.KEY_FILE) then
-		return readfile(Hydrogen.KEY_FILE)
-	end
-	return nil
+	local info = getClientInfo()
+	local url = string.format(
+		"https://hydrogen-key-system.vercel.app/generate.html?uid=%s&user=%s&hwid=%s",
+		tostring(info.UserId),
+		HttpService:UrlEncode(info.Username),
+		HttpService:UrlEncode(info.HWID)
+	)
+	return url
 end
 
 function Hydrogen.ValidateKey(key)
