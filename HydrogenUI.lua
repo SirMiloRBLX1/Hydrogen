@@ -61,7 +61,7 @@ local function HydrogenDebug(text)
 	end
 end
 
-local IsKeyLess = false -- ✅ Set to true to disable key system
+local IsKeyLess = true -- ✅ Set to true to disable key system
 local DeveloperUserId = 123456789 -- ✅ Replace with your own UserId
 
 -- 🔐 VALIDATOR FUNCTION
@@ -687,7 +687,7 @@ local function updateSettings(key, value)
 	if key == "language" then
 		changeLanguage(value);
 	end
-	pcall(_writefile, "evonui/settings.json", jsonEncode(httpService, uiSettings));
+	pcall(_writefile, "hydrogenui/settings.json", jsonEncode(httpService, uiSettings));
 end
 
 --[[ Create UI ]]--
